@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TGIF</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://unpkg.com/vue/dist/vue.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="row align-items-end no-gutters">
+                <div class="col-1">
+                    <a class="navbar-brand" href="#"><img src="img/logo.png"> </a>
+                </div>
+                <div class="col">
+                    <h1>TGIF LOGO</h1>
+                </div>
+                <div class="col-3-push   ml-auto"><a href="mailto:info@tgif.net"><i class="fa fa-envelope-o" style="font-size:20px"></i>  info@tgif.net</a></div>
+            </div>
+            <nav class="navbar border border-dark">
+                <div class="row no-gutters">
+                    <div class="col-12">
+                        <a href="/Home.html"> Home</a>
+                        <div class="dropdown">
+                            <a href="https://history.house.gov/Congressional-Overview/Profiles/113th/"> Congress 113</a>
+                            <div class="dropdown-content">
+                                <a href="/House.html">House</a>
+                                <a href="/Senators.html">Senate</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <a href="#"> Attendance</a>
+                            <div class="dropdown-content">
+                                <a href="/HouseAttendance.html">House</a>
+                                <a href="/SenatorsAttendance.html">Senate</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <a href="#"> Party Loyalty</a>
+                            <div class="dropdown-content">
+                                <a href="/HouseLoyalty.html">House</a>
+                                <a href="/SenatorsLoyalty.html">Senate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <main>
+            <div class="row no-gutters">
+
+                <div class="col-8">
+                    <h1>Senators</h1>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum nisi tempore ducimus, unde aut odit earum voluptatem voluptates aliquid aspernatur quae, ullam molestias provident. Perspiciatis velit provident accusantium enim dolore.</p>
+                </div>
+            </div>
+        </main>
+
+        <article>
+            <div id="app">
+                <table class="table table-sm table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th scope="col">Party</th>
+                            <th scope="col">State </th>
+                            <th scope="col">Years in Office</th>
+                            <th scope="col">% Votes w/Party</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="item in senators">
+                            <td>{{ item.name }}</td>
+                            <td>{{ item.party }}</td>
+                            <td>{{ item.state }}</td>
+                            <td>{{ item.seniority }}</td>
+                            <td>{{ item.votos_con_partido}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </article>
+
+
+        <script>
+            const url = "https://api.propublica.org/congress/v1/115/senate/members.json";
+            var CongresoJson = [];
+
+
+
+
+            fetch(url, {
+                    method: "GET",
+                    mode: "cors",
+                    headers: {
+                        'X-API-Key': '9uEhh93sk4PVRFxNnwePjBESuhqiTIjneHcwcvWg'
+                    }
+                })
+                .then(resp => resp.json())
+                .then(function(data) {
+                    var senadores = []
+                    CongresoJson = data;
+                    console.dir(CongresoJson)
+
+                    //      app.senators = CongresoJson.results[0].members;
+
+
+
+
+
+                    var vm = new Vue({
+                        el: '#app',
+                        data: {
+                            senators: [],
+                        }
+
+                    });
+
+                    CongresoJson.results[0].members.forEach(Congreso => {
+                        vm.senators.push({
+                            name: `${Congreso.first_name} ${Congreso.last_name}`,
+                            party: Congreso.party,
+                            state: Congreso.state,
+                            seniority: Congreso.seniority,
+                            votos_con_partido: Congreso.votes_with_party_pct
+                        });
+                        /*
+                            app.senators = [{
+                                name: `${Congreso.first_name} ${Congreso.last_name}`,
+                                party: Congreso.party,
+                                state: Congreso.state,
+                                seniority: Congreso.seniority,
+                                votos_con_partido: Congreso.votes_with_party_pct
+                            }, ];*/
+                    });
+                    console.dir(app.senators)
+                    console.dir(senadores)
+
+
+
+
+                })
+                .catch(function(error) {
+                    console.log(error);
+                });
+        </script>
+        </article>
+
+        <footer class="border border-dark ">
+            <div>
+                <div class="col ">
+                    <p>@2016 TGIF | All Rights Reserved</p>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+</body>
+
+</html>

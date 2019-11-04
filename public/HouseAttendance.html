@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>TGIF</title>
+    <link rel="stylesheet" type="text/css" href="styles/styles.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="row align-items-end no-gutters">
+                <div class="col-1">
+                    <a class="navbar-brand" href="#"><img src="img/logo.png"> </a>
+                </div>
+                <div class="col">
+                    <h1>TGIF LOGO</h1>
+                </div>
+                <div class="col-3-push   ml-auto"><a href="mailto:info@tgif.net"><i class="fa fa-envelope-o" style="font-size:20px"></i>  info@tgif.net</a></div>
+            </div>
+            <nav class="navbar border border-dark">
+                <div class="row no-gutters">
+                    <div class="col-12">
+                        <a href="/Home.html"> Home</a>
+                        <div class="dropdown">
+                            <a href="https://history.house.gov/Congressional-Overview/Profiles/113th/"> Congress 113</a>
+                            <div class="dropdown-content">
+                                <a href="/House.html">House</a>
+                                <a href="/Senators.html">Senate</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <a href="#"> Attendance</a>
+                            <div class="dropdown-content">
+                                <a href="/HouseAttendance.html">House</a>
+                                <a href="/SenatorsAttendance.html">Senate</a>
+                            </div>
+                        </div>
+                        <div class="dropdown">
+                            <a href="#"> Party Loyalty</a>
+                            <div class="dropdown-content">
+                                <a href="/HouseLoyalty.html">House</a>
+                                <a href="/SenatorsLoyalty.html">Senate</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+
+        <main>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6 ">
+                        <h1>Attendance</h1>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum nisi tempore ducimus, unde aut odit earum voluptatem voluptates aliquid aspernatur quae, ullam molestias provident. Perspiciatis velit provident accusantium enim dolore.</p>
+                    </div>
+
+                    <div class="col-6 ">
+                        <h4>Senate at a glance</h4>
+                        <table class="table table-sm table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Party</th>
+                                    <th scope="col">No. of Reps</th>
+                                    <th scope="col">% Voted W/Party</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bodyTablaAttendanceHouse">
+                                <!--Js la popula-->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="container">
+                <div class="row">
+                    <div class="col-6">
+                        <h4>Least engaged (Bottom 10% attendance)</h4>
+                        <table class="table table-sm table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Missed Votes</th>
+                                    <th scope="col">% Missed</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bodyTablaLeastAttendanceHouse">
+                                <!--Js la popula-->
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="col-6">
+                        <h4>Most engaged (Top 10% attendance)</h4>
+                        <table class="table table-sm table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Party</th>
+                                    <th scope="col">Missed Votes</th>
+                                    <th scope="col">% Voted W/Party</th>
+                                </tr>
+                            </thead>
+                            <tbody id="bodyTablaMostAttendanceHouse">
+                                <!--Js la popula-->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+        </main>
+
+
+
+        <footer class="border border-dark ">
+            <div>
+                <div class="col ">
+                    <p>@2016 TGIF | All Rights Reserved</p>
+                </div>
+            </div>
+        </footer>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js " integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo " crossorigin="anonymous "></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js " integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1 " crossorigin="anonymous "></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js " integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM " crossorigin="anonymous "></script>
+        <script src="js/HouseAttendance.js "></script>
+</body>
+
+</html>
